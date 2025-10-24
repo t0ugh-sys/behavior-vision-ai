@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: behavior-detection-backend
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/behavior_detection?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+  
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# 文件上传配置
+file:
+  upload:
+    path: C:/Users/Wells/Desktop/detection/uploads
+
+# Python服务配置
+python:
+  service:
+    url: http://localhost:5000
+
+# 跨域配置
+cors:
+  allowed-origins: http://localhost:5173
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
+

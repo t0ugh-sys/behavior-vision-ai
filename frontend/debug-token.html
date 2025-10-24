@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token调试工具</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #409eff;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .label {
+            font-weight: bold;
+            color: #606266;
+        }
+        .value {
+            color: #303133;
+            word-break: break-all;
+        }
+        .token-preview {
+            background: #f0f2f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            overflow-wrap: break-word;
+            margin-top: 10px;
+        }
+        .status {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .status.success {
+            background: #f0f9ff;
+            color: #67c23a;
+        }
+        .status.error {
+            background: #fef0f0;
+            color: #f56c6c;
+        }
+        button {
+            background: #409eff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #66b1ff;
+        }
+        button.danger {
+            background: #f56c6c;
+        }
+        button.danger:hover {
+            background: #f78989;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Token调试工具</h1>
+    
+    <div class="card">
+        <h3>Token信息</h3>
+        <div class="info-row">
+            <span class="label">Token状态:</span>
+            <span class="value" id="tokenStatus"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Token长度:</span>
+            <span class="value" id="tokenLength"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Token预览:</span>
+        </div>
+        <div class="token-preview" id="tokenPreview"></div>
+    </div>
+    
+    <div class="card">
+        <h3>用户信息</h3>
+        <div class="info-row">
+            <span class="label">用户状态:</span>
+            <span class="value" id="userStatus"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">用户数据:</span>
+        </div>
+        <div class="token-preview" id="userData"></div>
+    </div>
+    
+    <div class="card">
+        <h3>操作</h3>
+        <button onclick="refreshData()">🔄 刷新数据</button>
+        <button onclick="testAPI()">🧪 测试API</button>
+        <button class="danger" onclick="clearData()">🗑️ 清除数据</button>
+        <button onclick="goToLogin()">🔐 前往登录</button>
+    </div>
+    
+    <div class="card" id="testResult" style="display:none;">
+        <h3>API测试结果</h3>
+        <div class="token-preview" id="apiResponse"></div>
+    </div>
+
+    <script>
+        function loadData() {
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            
+            // Token状态
+            if (token) {
+                document.getElementById('tokenStatus').innerHTML = '<span class="status success">✓ Token存在</span>';
+                document.getElementById('tokenLength').textContent = token.length + ' 字符';
+                document.getElementById('tokenPreview').textContent = token.substring(0, 100) + '...';
+            } else {
+                document.getElementById('tokenStatus').innerHTML = '<span class="status error">✗ Token不存在</span>';
+                document.getElementById('tokenLength').textContent = '0';
+                document.getElementById('tokenPreview').textContent = '未找到token';
+            }
+            
+            // 用户信息
+            if (user) {
+                document.getElementById('userStatus').innerHTML = '<span class="status success">✓ 用户信息存在</span>';
+                try {
+                    const userData = JSON.parse(user);
+                    document.getElementById('userData').textContent = JSON.stringify(userData, null, 2);
+                } catch (e) {
+                    document.getElementById('userData').textContent = '用户数据格式错误: ' + e.message;
+                }
+            } else {
+                document.getElementById('userStatus').innerHTML = '<span class="status error">✗ 用户信息不存在</span>';
+                document.getElementById('userData').textContent = '未找到用户信息';
+            }
+        }
+        
+        function refreshData() {
+            loadData();
+            alert('数据已刷新');
+        }
+        
+        async function testAPI() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Token不存在，无法测试');
+                return;
+            }
+            
+            const resultDiv = document.getElementById('testResult');
+            const responseDiv = document.getElementById('apiResponse');
+            resultDiv.style.display = 'block';
+            responseDiv.textContent = '正在测试...';
+            
+            try {
+                const response = await fetch('/api/health', {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                });
+                
+                const data = await response.json();
+                responseDiv.textContent = JSON.stringify({
+                    status: response.status,
+                    statusText: response.statusText,
+                    data: data
+                }, null, 2);
+            } catch (error) {
+                responseDiv.textContent = 'API测试失败: ' + error.message;
+            }
+        }
+        
+        function clearData() {
+            if (confirm('确定要清除所有本地数据吗？')) {
+                localStorage.clear();
+                loadData();
+                alert('数据已清除');
+            }
+        }
+        
+        function goToLogin() {
+            window.location.href = '/login';
+        }
+        
+        // 页面加载时执行
+        loadData();
+    </script>
+</body>
+</html>
+

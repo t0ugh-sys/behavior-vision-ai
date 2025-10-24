@@ -1,0 +1,238 @@
+/* ================================
+   主题配置 - 矢车菊蓝·优雅主题
+   ================================ */
+
+:root {
+  /* 主色调 - 矢车菊蓝 */
+  --primary-color: #6495ED;
+  --primary-light: #7BA5F5;
+  --primary-lighter: #92B5F8;
+  --primary-dark: #5885E0;
+  --primary-darker: #4C75D3;
+  
+  /* 辅助色 - 互补色系 */
+  --secondary-color: #8B7FED;
+  --secondary-light: #A599F5;
+  --secondary-dark: #7569E0;
+  
+  /* 状态色 */
+  --success-color: #10b981;
+  --success-light: #34d399;
+  --success-dark: #059669;
+  
+  --warning-color: #f59e0b;
+  --warning-light: #fbbf24;
+  --warning-dark: #d97706;
+  
+  --danger-color: #ef4444;
+  --danger-light: #f87171;
+  --danger-dark: #dc2626;
+  
+  --info-color: #6495ED;
+  --info-light: #7BA5F5;
+  --info-dark: #5885E0;
+  
+  /* 中性色 */
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #ffffff;
+  
+  /* 背景色 */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-dark: #0f172a;
+  
+  /* 边框色 */
+  --border-color: #e2e8f0;
+  --border-light: #f1f5f9;
+  --border-dark: #cbd5e1;
+  
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* 渐变 - 矢车菊蓝系 */
+  --gradient-primary: linear-gradient(135deg, #6495ED 0%, #8B7FED 100%);
+  --gradient-secondary: linear-gradient(135deg, #5885E0 0%, #7569E0 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  
+  /* 侧边栏主题 - 深蓝优雅 ✨ 当前使用 */
+  --sidebar-gradient: linear-gradient(180deg, #2c3e50 0%, #34495e 50%, #3d566e 100%);
+  
+  /* 其他备选方案 */
+  /* ChatGPT 风格 - 深黑灰 */
+  /* --sidebar-gradient: linear-gradient(180deg, #171717 0%, #202123 50%, #2b2d31 100%); */
+  /* --sidebar-bg: #202123; */
+  /* --sidebar-hover: rgba(255, 255, 255, 0.1); */
+  /* --sidebar-active: #343541; */
+  
+  /* 方案2: 深蓝渐变 - 科技感 */
+  /* --sidebar-gradient: linear-gradient(180deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%); */
+  
+  /* 方案3: 深灰蓝 - 优雅现代 */
+  /* --sidebar-gradient: linear-gradient(180deg, #1a2332 0%, #2d3748 50%, #374151 100%); */
+  
+  /* 方案4: 深紫黑 - 神秘科技 */
+  /* --sidebar-gradient: linear-gradient(180deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%); */
+  
+  /* 方案5: 墨绿渐变 - 沉稳大气 */
+  /* --sidebar-gradient: linear-gradient(180deg, #064e3b 0%, #065f46 50%, #047857 100%); */
+  
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-base: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-base: 16px;
+  --spacing-md: 20px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* 字体 */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  
+  /* 过渡 */
+  --transition-fast: 150ms;
+  --transition-base: 300ms;
+  --transition-slow: 500ms;
+}
+
+/* Element Plus 主题覆盖 */
+.el-button--primary {
+  --el-button-bg-color: var(--primary-color);
+  --el-button-border-color: var(--primary-color);
+  --el-button-hover-bg-color: var(--primary-light);
+  --el-button-hover-border-color: var(--primary-light);
+  --el-button-active-bg-color: var(--primary-dark);
+  --el-button-active-border-color: var(--primary-dark);
+}
+
+.el-menu-item.is-active {
+  background: var(--gradient-primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+/* 全局滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-lighter);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* 卡片阴影效果 */
+.card-shadow {
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition-base);
+}
+
+.card-shadow:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 玻璃态效果 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 动画类 */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+

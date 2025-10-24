@@ -1,0 +1,103 @@
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ========================
+# Python Service
+# ========================
+python-service/__pycache__/
+python-service/temp/
+python-service/uploads/*
+!python-service/uploads/.gitkeep
+python-service/visualizations/*
+!python-service/visualizations/.gitkeep
+python-service/snapshots/*
+!python-service/snapshots/.gitkeep
+*.pt.bak
+
+# ========================
+# Java / Maven
+# ========================
+backend/target/
+backend/logs/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+.mvn/
+mvnw
+mvnw.cmd
+
+# ========================
+# Frontend / Node
+# ========================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+*.local
+
+# ========================
+# Uploads & Generated Files
+# ========================
+uploads/*
+!uploads/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
+logs/
+*.mp4
+*.avi
+*.mov
+
+# ========================
+# IDE & Editors
+# ========================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.iml
+
+# ========================
+# OS
+# ========================
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# ========================
+# Config Files (with sensitive data)
+# ========================
+config.bat
+*.env
+.env.local
+.env.*.local
+
+# ========================
+# Temporary Files
+# ========================
+*.tmp
+*.temp
+*.bak
+~*
