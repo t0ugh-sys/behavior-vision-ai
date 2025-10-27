@@ -1,6 +1,33 @@
-# 人体异常行为检测系统
+<div align="center">
 
-基于YOLOv8-Pose的实时人体异常行为检测系统，可识别跌倒、打架、异常姿势等行为。
+# 🤖 Behavior Vision AI
+
+**智能守护者 - 基于YOLOv8的人体异常行为检测系统**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Java 17+](https://img.shields.io/badge/java-17+-orange.svg)](https://www.oracle.com/java/technologies/downloads/)
+[![Vue 3](https://img.shields.io/badge/vue-3.x-green.svg)](https://vuejs.org/)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Pose-red.svg)](https://github.com/ultralytics/ultralytics)
+
+[功能特性](#-功能特性) • [快速开始](#-快速开始) • [技术栈](#-技术栈) • [文档](#-文档) • [贡献](#-贡献)
+
+</div>
+
+---
+
+## 📖 项目简介
+
+**Behavior Vision AI** 是一个基于深度学习的智能监控系统，利用YOLOv8-Pose人体姿态估计技术，实现对人体异常行为的实时检测与告警。系统采用前后端分离架构，支持图片、视频文件检测以及实时摄像头监控，可广泛应用于公共安全、养老看护、智能家居等场景。
+
+### ✨ 亮点
+
+- 🎯 **高精度检测** - 基于YOLOv8-Pose模型，准确识别跌倒、打架等异常行为
+- ⚡ **实时处理** - 支持视频流实时分析，毫秒级响应
+- 🎨 **现代化UI** - 采用Element Plus组件库，优雅的Cornflower Blue主题
+- 🔔 **智能告警** - WebSocket实时推送，支持声音提醒
+- 📊 **数据可视化** - ECharts图表展示统计分析结果
+- 🚀 **一键部署** - 提供批处理脚本，Windows环境一键启动
 
 ## 系统架构
 
@@ -13,49 +40,97 @@
 └── uploads/             # 文件上传目录
 ```
 
-## 技术栈
+## 🛠️ 技术栈
 
-### 后端
-- **Spring Boot 3.2** - Java后端框架
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### 🔧 后端服务
+- **Spring Boot 3.2** - 企业级Java框架
 - **MySQL 8.0** - 关系型数据库
-- **Spring Data JPA** - ORM框架
-- **WebSocket** - 实时通信
-- **Maven** - 项目管理
+- **Spring Data JPA** - ORM持久化
+- **Spring Security + JWT** - 安全认证
+- **WebSocket** - 实时双向通信
+- **Maven** - 依赖管理
 
-### 前端
-- **Vue 3** - 前端框架
+</td>
+<td width="33%" valign="top">
+
+### 🎨 前端应用
+- **Vue 3** - 渐进式框架
 - **Element Plus** - UI组件库
 - **Pinia** - 状态管理
 - **Vue Router** - 路由管理
 - **Axios** - HTTP客户端
 - **ECharts** - 数据可视化
+- **Vite** - 构建工具
 
-### Python服务
-- **FastAPI** - Web框架
-- **YOLOv8-Pose** - 人体姿态估计模型
+</td>
+<td width="33%" valign="top">
+
+### 🧠 AI检测服务
+- **FastAPI** - 异步Web框架
+- **YOLOv8-Pose** - 姿态估计
 - **OpenCV** - 图像处理
-- **NumPy** - 数值计算
+- **NumPy** - 科学计算
+- **Ultralytics** - 模型推理
 
-## 功能特性
+</td>
+</tr>
+</table>
 
-### ✅ 核心功能
-- **图片/视频检测** - 支持上传图片或视频文件进行检测
-- **实时摄像头检测** - 调用本地摄像头进行实时检测
-- **异常行为识别** - 跌倒、打架、异常姿势检测
-- **实时告警推送** - WebSocket推送异常行为告警
-- **检测记录管理** - 查看历史检测记录
-- **数据统计分析** - 可视化图表展示统计数据
+## 🎯 功能特性
 
-### 🎯 检测能力
-- **跌倒检测** - 识别人体跌倒姿态
-- **打架检测** - 检测多人打斗行为
-- **异常姿势** - 识别其他异常人体姿势
+### 核心功能模块
 
-### 🔔 告警功能
-- **实时推送** - WebSocket实时推送告警
-- **声音提醒** - 浏览器播放告警音效
-- **已读/未读** - 告警消息状态管理
-- **告警处理** - 记录告警处理情况
+| 模块 | 功能描述 | 技术实现 |
+|------|---------|---------|
+| 🎬 **多源检测** | 支持图片、视频文件、实时摄像头、RTSP流检测 | YOLOv8-Pose + OpenCV |
+| 🤖 **异常识别** | 跌倒、打架、异常姿势等多种行为检测 | 关键点分析 + 时序建模 |
+| 🔔 **智能告警** | 实时推送、声音提醒、多级告警策略 | WebSocket + 浏览器API |
+| 📊 **数据分析** | 行为统计、趋势分析、可视化图表 | ECharts + 数据聚合 |
+| 🎨 **可视化** | 骨架标注、行为轨迹、热力图展示 | Canvas + SVG渲染 |
+| 👥 **用户管理** | 角色权限、操作日志、个性化配置 | Spring Security + JWT |
+| 📁 **记录管理** | 历史查询、导出报告、批量操作 | JPA + 文件服务 |
+| ⚙️ **系统配置** | 阈值调整、区域设置、模型参数 | 动态配置热更新 |
+
+### 检测能力详情
+
+<details>
+<summary><b>🔻 跌倒检测</b> - 点击展开</summary>
+
+- ✅ 识别人体重心失衡
+- ✅ 检测倒地姿态（侧倒、后仰、前扑）
+- ✅ 支持单人/多人场景
+- ✅ 实时输出置信度评分
+</details>
+
+<details>
+<summary><b>🥊 打架检测</b> - 点击展开</summary>
+
+- ✅ 多人肢体冲突识别
+- ✅ 暴力动作模式匹配
+- ✅ 时序行为分析
+- ✅ 区域入侵检测
+</details>
+
+<details>
+<summary><b>🚨 异常姿势</b> - 点击展开</summary>
+
+- ✅ 长时间静止异常
+- ✅ 非常规身体姿态
+- ✅ 危险区域徘徊
+- ✅ 自定义规则引擎
+</details>
+
+### 告警系统特性
+
+- 🔔 **实时推送** - WebSocket双向通信，0延迟告警
+- 🎵 **多模态提醒** - 声音、桌面通知、邮件（可扩展）
+- 📝 **告警记录** - 自动保存快照、视频片段、行为标注
+- 📊 **统计分析** - 告警频次、时段分布、趋势预测
+- ✅ **处理流程** - 已读/未读、处理状态、备注记录
 
 ## 快速开始
 
